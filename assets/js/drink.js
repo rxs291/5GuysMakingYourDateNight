@@ -1,14 +1,15 @@
 //Joe's fetch API work for Drinks
 const API_URL = 'https://www.thecocktaildb.com/api/json/v1/1/';
 
-getRandomCocktail();
-searchCocktailsByName('Jitterbug');
+// getRandomCocktail();
+// searchCocktailsByName('Jitterbug');
+// searchCocktailsByIngredient('Bourbon')
 
 // Fetch a random cocktail
 async function getRandomCocktail() {
   const response = await fetch(`${API_URL}random.php`);
   const data = await response.json();
-  console.log(data.drinks[0])
+  // console.log(data.drinks[0])
   return data.drinks[0];
 }
 
@@ -24,6 +25,7 @@ async function searchCocktailsByName(name) {
 async function searchCocktailsByIngredient(ingredient) {
   const response = await fetch(`${API_URL}filter.php?i=${ingredient}`);
   const data = await response.json();
+  console.log(data.drinks)
   return data.drinks;
 }
 
@@ -33,3 +35,21 @@ async function searchCocktailsByIngredient(ingredient) {
 //   const data = await response.json();
 //   return data.drinks[0];
 // }
+async function main() {
+  const cocktailObject = await getRandomCocktail();
+  ingredientsMeasurementMatch(cocktailObject);
+}
+
+// Function to console log the ingredients next to the measurements
+function ingredientsMeasurementMatch(object){
+  for (key in object){
+    console.log(key, typeof key)
+    if (key.startsWith('strIngredient')) {
+      console.log(object[key])
+    }
+
+    if (key.startsWith('strMeasure')) {
+      console.log(object[key])
+    }
+  }
+}
