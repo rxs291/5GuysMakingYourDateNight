@@ -111,14 +111,28 @@ fetch(randomMeal)
         card.classList.add('card');
         ////card body
         var cardBody = document.createElement('div');
+        cardBody.style.border = "thick solid";
+        // cardBody.width = "200";
+        // cardBody.height = "200"; 
+        cardBody.style.maxWidth = "50%";
+        cardBody.style.maxHeight = "50%";
+        cardBody.style.display = "block";
+        cardBody.style.margin = "0 auto";
+        cardBody.style.borderRadius = "25px";
+        // cardBody.style.display = "flex";
+        // cardBody.style.flexDirection = "column";
 
-
-
+        /////image element
         var imageFood = document.createElement('img'); 
-        imageFood.setAttribute("src", thumbnail) ;
-        console.log(thumbnail)  ;
-        console.log(imageFood.src) ; 
-        imageFood.width = "100"; 
+        imageFood.setAttribute("src", thumbnail) ; 
+        imageFood.style.maxWidth = "100%";
+        imageFood.style.width = "100%";
+        imageFood.style.maxHeight = "50%"; 
+        imageFood.style.borderRadius = "25px";
+        // imageFood.style.objectPosition = "center";
+        // imageFood.style.display = "block";
+        // imageFood.style.margin = "auto";
+        imageFood.style.border = "thin solid"
 
         var cardMealName = document.createElement("h5");
         cardMealName.textContent = mealName;
@@ -128,6 +142,7 @@ fetch(randomMeal)
 
         var cardInstruct = document.createElement('p');
         cardInstruct.textContent = instructions;
+        cardInstruct.style.textOverflow= "ellipsis";
 
         var cardTuber = document.createElement('a');
         var link = document.createTextNode(youtubeLink);
