@@ -5,6 +5,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="./assets/css/secondPage.css">
+
+        <!-- Materialize CCDn Link -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         <title>Five Guys Plan your Date Night</title>
     </head>
     <body>
@@ -13,41 +16,26 @@
           <h1>Five Guys Plan your Date Night</h1>
         </div>
       </div>
-      <div class="testingContainer">
-        <div class="cards">Hello World!</div>
-      </div>
-      <div class = "sideSearchBox">
-        <form class = "flex-center flex-column">
-          <div class = "searchBar">
-            <label>Food
-              <select>
-                <option value="Breakfast">Breakfast</option>
-                <option value="Side">Side</option>
-                <option value="Starter">Starter</option>
-                <option value="Beef">Beef</option>
-                <option value="Pork">Pork</option>
-                <option value="Chicken">Chicken</option>
-                <option value="Lamb">Lamb</option>
-                <option value="Goat">Goat</option>
-                <option value="Pasta">Pasta</option>
-                <option value="Seafood">Seafood</option>
-                <option value="Dessert">Dessert</option>
-                <option value="Vegetarian">Vegetarian</option>
-                <option value="Vegan">Vegan</option>
-                <option value="Miscellaneous">Miscellaneous</option>
-              </select>
-            </label>
-          </div>
-          <div class = "searchBar">
-            <label>Drinks
-              <select>
-                <option value="Non-Alcoholic">Non-Alcoholic</option>
-                <option value="Alcoholic">Alcoholic</option>
-              </select>
-            </label>
-          </div>
+      <div class="row">
+        <div class="col s3">
+          <select class="browser-default">
+            <option value="" disabled selected>Choose your option</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+          </select>
+          <select class="browser-default">
+            <option value="" disabled selected>Choose your option</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+          </select>
           <button type = "button" class = "searchBtn">Search</button>
-        </form>
+        </div>
+        <div class="col s9">Hello World!</div>
       </div>
+
+      <!-- Materializ Script Link -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     </body>
 </html>
