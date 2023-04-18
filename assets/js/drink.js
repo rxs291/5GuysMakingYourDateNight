@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log(drinkPreference);
     getRandom(drinkPreference).then((drink) => {
       console.log(drink);
+      updateDrinkDetails(drink);
     });
   });
 
@@ -48,6 +49,25 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
+  function updateDrinkDetails(drink) {
+    cardTitle.textContent = drink.strDrink;
+    drinkImage.src = drink.strDrinkThumb;
+    ingredientsList.innerHTML = '';
+
+    // Add the instructions to the card
+    const instructions = document.querySelector('#instructions');
+    instructions.textContent = drink.strInstructions;
+  
+    for (let i = 1; i <= 15; i++) {
+      if (drink[`strIngredient${i}`]) {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${drink[`strIngredient${i}`]} - ${drink[`strMeasure${i}`]}`;
+        ingredientsList.appendChild(listItem);
+      } else {
+        break;
+      }
+    }
+  }
 
 
   async function getNonAlcoholicDrinkCount() {
