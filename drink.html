@@ -1,37 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/css/foundation.min.css">
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <title>Document</title>
+  <title>Materialize Example</title>
+  <!-- Materialize CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- Materialize Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Materialize JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+
 <body>
-  <h1>Drink Test</h1>
-  <div class="grid-container">
-    <div class="grid-x grid-margin-x align-center">
-      <div class="cell medium-6">
+  <div class="container">
+    <!-- Dropdown and submit button -->
+    <div class="row">
+      <div class="col s12 m6">
+        <div class="input-field col s12 m6">
+          <select id="drink-select">
+            <option value="" disabled selected>Select an option</option>
+            <option>Alcoholic</option>
+            <option>Non-Alcoholic</option>
+            <option>No Preference</option>
+          </select>
+          <!-- <label>Choose drink type</label> -->
+        </div>
+        <button class="btn waves-effect waves-light" id="submit-btn" type="submit" name="action">Generate Random
+          Drink</button>
+      </div>
+    </div>
+
+
+    <!-- Card Horizontal
+    <div class="card horizontal">
+      <div class="card-image">
+        <img src="https://via.placeholder.com/150" alt="Image description">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <span class="card-title">Card Title</span>
+          <p>I am a very simple card. I am good at containing small bits of information.</p>
+        </div>
+      </div>
+    </div> -->
+    
+    
+    
+    
+    
+    <!-- Card Vertical -->
+    <div class="row">
+      <div class="col s12 m6 l4">
         <div class="card">
-          <div class="card-divider">
-            Card Title
+          <div class="card-image">
+            <img src="https://via.placeholder.com/150" alt="Image description">
           </div>
-          <img src="https://via.placeholder.com/300x200" alt="Sample Image">
-          <div class="card-section">
-            <p>This is a sample card with a title, image, and some content.</p>
+          <div class="card-content">
+            <span class="card-title" id="card-title">Card Title</span>
+            <h4>Ingredients:</h4>
+            <ul id="ingredients-list">
+              <li>1 oz - Ingredient 1</li>
+              <li>2 oz - Ingredient 2</li>
+              <li>1/2 oz - Ingredient 3</li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  
-  <!-- <div class="container"></div> -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/foundation.min.js"></script>
+
+
     <script>
-      $(document).foundation();
+      $(document).ready(function () {
+        $('select').formSelect();
+      });
     </script>
-  <script src="assets/js/drink.js"></script>
+    <script src="assets/js/drink.js"></script>
 </body>
+
 </html>
