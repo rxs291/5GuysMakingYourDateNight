@@ -7,39 +7,55 @@ document.addEventListener('DOMContentLoaded', function () {
   const cardTitle = document.querySelector('#card-title');
   const drinkImage = document.querySelector('img');
   const ingredientsList = document.querySelector('#ingredients-list');
-
+  // const verticalCardContainer = document.getElementById('#vertical-card-container');
+  // verticalCardContainer.style.visibility ="hidden";
+  
   submitButton.addEventListener('click', function (e) {
     e.preventDefault();
-    
-    const drinkOption = drinkType.value;
-    let apiUrl;
 
-    if (drinkOption === 'Alcoholic') {
-      apiUrl = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic`;
-    } else if (drinkOption === 'Non-Alcoholic') {
-      apiUrl = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic`;
-    } else {
-      apiUrl = `https://www.thecocktaildb.com/api/json/v1/1/random.php`;
-    }
+    fetchRandomDrink()
 
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => {
-        const drinks = data.drinks;
-        const randomDrink = drinks[Math.floor(Math.random() * drinks.length)];
+    // fetch(apiUrl)
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     const drinks = data.drinks;
+    //     console.log(data.drinks);
+    //     const randomDrink = drinks[Math.floor(Math.random() * drinks.length)];
 
-        fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${randomDrink.idDrink}`)
-          .then((response) => response.json())
-          .then((data) => {
-            const drinkDetails = data.drinks[0];
+    //     fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${randomDrink.idDrink}`)
+    //       .then((response) => response.json())
+    //       .then((data) => {
+    //         const drinkDetails = data.drinks[0];
 
-            populateCard(drinkDetails);
-          });
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
+    //         populateCard(drinkDetails);
+    //       });
+    //   })
+    //   .catch((error) => {
+    //     console.error('Error:', error);
+    //   });
   });
+
+  function createAPIURL(){
+    const drinkOption = drinkType.value;
+    // const actualDrinkType = data[0].str
+    let apiUrl;
+    if (drinkOption === 'Alcoholic') {
+      console.log('Alcoholic');
+    } else if (drinkOption === 'Non-Alcoholic') {
+      console.log('Non-Alcoholic');
+    } else {
+      console.log('No Preference');
+    }
+    apiUrl
+  }
+
+  function fetchDrinkAPI(apiUrl){
+    fetch(apiUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data)
+    })
+  }
 
   function populateCard(drinkDetails) {
     cardTitle.textContent = drinkDetails.strDrink;
