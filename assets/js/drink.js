@@ -37,6 +37,7 @@ async function searchCocktailsByIngredient(ingredient) {
 // }
 async function main() {
   const cocktailObject = await getRandomCocktail();
+  console.log(cocktailObject);
   ingredientsMeasurementMatch(cocktailObject);
 }
 
@@ -65,6 +66,7 @@ function ingredientsMeasurementMatch(object) {
   }
 }
 
+function 
 
 
 main();
