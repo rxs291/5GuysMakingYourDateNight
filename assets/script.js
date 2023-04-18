@@ -14,23 +14,43 @@ var testing = "https://www.themealdb.com/api/json/v1/1/search.php?f=c"
 var randomMeal = "https://www.themealdb.com/api/json/v1/1/random.php" 
 
 ////requestByName API works WITHOUT HAVING TO REMOVE THE SPACES
-var requestByName = "https://www.themealdb.com/api/json/v1/1/search.php?s=Duck Confit" ;
+////THIS IS THE LINK THAT WILL GO INTO mealsByName
+var requestByName = "https://www.themealdb.com/api/json/v1/1/search.php?s=Moussaka" ;
 
-var requestCatergoryList = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Miscellaneous"
+
+var requestCatergoryList = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Beef"
  
 
 /////THIS WILL NOT BE USED, ONLY FOR REFERENCE. SHOULD BE A DROPDOWN SELECTION
 var requestCatergorys = "https://www.themealdb.com/api/json/v1/1/categories.php"
 
 
-async function workInProgress(){  
 
-fetch(testing)
+fetch(requestCatergoryList)
 .then(function (response) {
   return response.json();
 })
 .then(function (data) {   
 
+    console.log(data)   
+}
+)
+
+
+
+
+
+
+
+async function mealsByName(){  
+
+fetch(randomMeal)
+.then(function (response) {
+  return response.json();
+})
+.then(function (data) {   
+
+    /////this console log is uncessary, only for reference use!!!!!!!!
     console.log(data)   
 
  
@@ -53,6 +73,12 @@ fetch(testing)
         console.log(data.meals[i].strInstructions)
 
 
+        ///card container
+        var card = document.createElement('div');
+        card.classList.add('card');
+        var cardBody = document.createElement('div')
+
+
         for (const key in data.meals[i]){   
              
  
@@ -69,7 +95,7 @@ fetch(testing)
 
         }
 
-        for (var j = 0; j <ingredientList.length/2; j++){
+            for (var j = 0; j <ingredientList.length/2; j++){
                  
             combinedARR.push(ingredientList[j] + " " + ingredientList[j + ingredientList.length/2])  
 
@@ -78,6 +104,40 @@ fetch(testing)
         ///// THIS IS THE LOCATION WHERE WE WILL CREATE THE DIV ELEMENT THAT WILL HOUSE THE LIST OF INGRIDENTS
         console.log(combinedARR) ////// THIS THE LIST THAT WILL GO ON THE CARD 
      
+        
+        ///card container 
+        var card = document.createElement('div');
+        card.classList.add('card');
+        ////card body
+        var cardBody = document.createElement('div');
+        var imageFood = document.createElement('img');
+        imageFood.src = thumbnail;
+        imageFood.width = "15vw";
+        imageFood.float = "center";
+
+        var cardMealName = document.createElement("h5");
+        cardMealName.textContent = mealName;
+ 
+        var cardIngred = document.createElement('p');
+        cardIngred.textContent = combinedARR.toString();
+
+        var cardInstruct = document.createElement('p');
+        cardInstruct.textContent = instructions;
+
+        var cardTuber = document.createElement('a');
+        var link = document.createTextNode(youtubeLink);
+        cardTuber.appendChild(link);
+        cardTuber.title = youtubeLink;
+        cardTuber.href = youtubeLink;
+
+        cardBody.appendChild(imageFood);
+        cardBody.appendChild(cardMealName);
+        cardBody.appendChild(cardIngred);
+        cardBody.appendChild(cardInstruct);
+        cardBody.appendChild(cardTuber);
+
+        card.appendChild(cardBody);
+        container.appendChild(card); 
  
  
 
@@ -88,4 +148,4 @@ fetch(testing)
 )
 }
 
-workInProgress()
+mealsByName()
