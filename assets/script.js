@@ -27,6 +27,9 @@ var requestCatergorys = "https://www.themealdb.com/api/json/v1/1/categories.php"
 
 
 
+
+
+
 fetch(requestCatergoryList)
 .then(function (response) {
   return response.json();
@@ -38,9 +41,7 @@ fetch(requestCatergoryList)
 )
 
 
-
-
-
+ 
 
 
 async function mealsByName(){  

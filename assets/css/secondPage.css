@@ -42,28 +42,14 @@ h1 {
   justify-content: left;
 }
 
-.testingContainer {
-  float: right;
-  margin: 2rem; 
-}
-
-.cards {
-  margin: 2.5rem;
+.browser-default {
+  margin: 2rem;
 }
 
 /* Side Box */
 
-.sideSearchBox {
-  float: left;
-  margin: 3rem;
-  border: 3px solid rgba(0, 0, 0, 0.534);
-  border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.575);
-  padding: 3rem 1rem 2.5rem 1rem;
-}
-
-.searchBar, .searchBtn {
-  margin: 1rem;
+.searchBtn {
+  margin: 2rem;
 }
 
 .searchBtn {
@@ -75,6 +61,6 @@ h1 {
 
 .searchBtn:hover {
   cursor: pointer;
-  box-shadow: 0 0.4rem 1.4rem #837b7a60;
+  box-shadow: 0 0.4rem 1.4rem #53505060;
 }
 
