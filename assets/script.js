@@ -3,65 +3,81 @@
 var mealName = '';
 var youtubeLink = '';
 var thumbnail = '';
-var ingredientList = [];
-var combinedARR = [];
-
-
-var testing = "http://api.openweathermap.org/geo/1.0/direct?q=austin&limit=1&appid=31fbadef98a417ef6f0e39d36c133d27" 
-
-var testing2 = "https://www.themealdb.com/api/json/v1/1/search.php?f=a"
-
-var testingRandom = "https://www.themealdb.com/api/json/v1/1/random.php"
-
-
-
-
+var instructions = '';
  
-console.log(testingRandom)
+
+////this pulls meals by first letter, not for functional use yet
+var testing = "https://www.themealdb.com/api/json/v1/1/search.php?f=c"
+
+
+///this pulls us a random meal
+var randomMeal = "https://www.themealdb.com/api/json/v1/1/random.php" 
+
+////requestByName API works WITHOUT HAVING TO REMOVE THE SPACES
+var requestByName = "https://www.themealdb.com/api/json/v1/1/search.php?s=Duck Confit" ;
+
+var requestCatergoryList = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Miscellaneous"
  
-fetch(testing2)
+
+/////THIS WILL NOT BE USED, ONLY FOR REFERENCE. SHOULD BE A DROPDOWN SELECTION
+var requestCatergorys = "https://www.themealdb.com/api/json/v1/1/categories.php"
+
+
+async function workInProgress(){  
+
+fetch(testing)
 .then(function (response) {
   return response.json();
 })
 .then(function (data) {   
-    console.log(data)  
-    console.log(Object.keys(data.meals[0]))
 
-
-    for (const key in data.meals[0]){ 
-        if(key.includes("strMeasure") && data.meals[0][key] !== null && data.meals[0][key] !== "" || key.includes("strIngredient") && data.meals[0][key] !== null && data.meals[0][key] !== ""){
-
-            ingredientList.push(data.meals[0][key]) 
-        }
-    }
-
-    console.log(ingredientList)
-    for (var i = 0; i <ingredientList.length/2; i++){
-        combinedARR.push(ingredientList[i] + " " + ingredientList[i + ingredientList.length/2])
-    }
-    
-    console.log(combinedARR)
-
-    for(var i = 0; i<=data.meals.length; i++){
-        mealName = data.meals[i].strMeal          ////THIS PULLS NAME 
-        youtubeLink = data.meals[i].strYoutube      //// THIS PULLS YOUTUBE LINK 
-        thumbnail = data.meals[i].strMealThumb     /// THIS PULL THUMBNAIL
-
-
+    console.log(data)   
 
  
+    /////this FOR LOOP iterates through all the returns of the API search. 
+    //// THISONLY WORKS FOR THE 'requestByName' API source, due to formatting
+    /////by the API
+    for(var i = 0; i<data.meals.length; i++){
 
-    var string = data.meals[i]["strIngredient" + "1"]
-    console.log(string)
-    console.log(typeof data.meals[i]) 
+        //////HERE IS WHERE WE WILL MAKE THE ID CARDS WITH INFORMATION PURGED FROM THE API
+        mealName = data.meals[i].strMeal          ////THIS PULLS NAME 
+        youtubeLink = data.meals[i].strYoutube      //// THIS PULLS YOUTUBE LINK 
+        thumbnail = data.meals[i].strMealThumb     /// THIS PULL THUMBNAIL 
+        instructions = data.meals[i].strInstructions
+        var ingredientList = [];
+        var combinedARR = [];
+
+        console.log(data.meals[i].strMeal)
+        console.log(data.meals[i].strYoutube)
+        console.log(data.meals[i].strMealThumb)
+        console.log(data.meals[i].strInstructions)
+
+
+        for (const key in data.meals[i]){   
+             
+ 
+
+            if(key.includes("strMeasure") && data.meals[i][key] !== null && data.meals[i][key] !== "" && data.meals[i][key] !== " " || key.includes("strIngredient") && data.meals[i][key] !== null && data.meals[i][key] !== "" && data.meals[i][key] !== " "){ 
+             
+                
     
-    // for (const key in data.meals[i]){
-    //     // if (key.textContent.includes("strIngredient"))
-    //     if(key.includes("strIngredient") && data.meals[0][key] !== null && data.meals[0][key] !== ""){
-    //     console.log(`${key}: ${data.meals[i][key]}`) 
-    //     }
+                ingredientList.push(data.meals[i][key])   
 
-    // }
+
+            }  
+
+
+        }
+
+        for (var j = 0; j <ingredientList.length/2; j++){
+                 
+            combinedARR.push(ingredientList[j] + " " + ingredientList[j + ingredientList.length/2])  
+
+            }  
+
+        ///// THIS IS THE LOCATION WHERE WE WILL CREATE THE DIV ELEMENT THAT WILL HOUSE THE LIST OF INGRIDENTS
+        console.log(combinedARR) ////// THIS THE LIST THAT WILL GO ON THE CARD 
+     
  
  
 
@@ -70,4 +86,6 @@ fetch(testing2)
  
 }
 )
- 
+}
+
+workInProgress()
