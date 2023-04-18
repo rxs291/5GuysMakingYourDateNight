@@ -1,0 +1,26 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+@media screen and (min-width:320px) {
+  .hero{
+    background-image: url(../kamil-kalbarczyk-19Ft3QfakMo-unsplash.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 200vh;
+    
+    }
+    .logo{
+      text-transform: capitalize;
+      font-size: 55px;
+      letter-spacing: 3px;
+      cursor: pointer;
+      padding-left: 20%;
+      color:white ;
+      padding-top: 20px;
+    }
+    
+}
+
