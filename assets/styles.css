@@ -3,24 +3,45 @@
   padding: 0;
   margin: 0;
 }
+/* The webpage is accessible to a screen size down to 320px */
 @media screen and (min-width:320px) {
-  .hero{
+  body {
     background-image: url(../kamil-kalbarczyk-19Ft3QfakMo-unsplash.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     height: 200vh;
-    
-    }
-    .logo{
-      text-transform: capitalize;
-      font-size: 55px;
-      letter-spacing: 3px;
-      cursor: pointer;
-      padding-left: 20%;
-      color:white ;
-      padding-top: 20px;
-    }
-    
-}
 
+  }
+
+  .logo {
+    text-transform: capitalize;
+    font-size: 55px;
+    letter-spacing: 3px;
+    cursor: pointer;
+    padding-left: 24%;
+    color: white;
+    padding-top: 20px;
+  }
+
+  /* The Main Search bar */
+  .mainSearchBar {
+    margin: 2rem;
+    padding: 10rem 2rem 2rem 35rem;
+    border: 6px solid #5A3E28 ;
+    background-color:#A29996 ;
+  }
+  .foodSearchbar{ß
+    margin: center;
+    padding: 5px;
+  }
+  .drinkSearchBar{
+    margin-right: 10px;
+    padding: 5px;
+  }
+  .searchBtn{
+margin-top: 3px;
+margin-left: 2.5rem;
+
+  }
+}
