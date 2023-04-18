@@ -7,190 +7,72 @@ document.addEventListener('DOMContentLoaded', function () {
   const cardTitle = document.querySelector('#card-title');
   const drinkImage = document.querySelector('img');
   const ingredientsList = document.querySelector('#ingredients-list');
-  // const verticalCardContainer = document.getElementById('#vertical-card-container');
-  // verticalCardContainer.style.visibility ="hidden";
-  
+
   submitButton.addEventListener('click', function (e) {
     e.preventDefault();
-
-    fetchRandomDrink()
-
-    // fetch(apiUrl)
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     const drinks = data.drinks;
-    //     console.log(data.drinks);
-    //     const randomDrink = drinks[Math.floor(Math.random() * drinks.length)];
-
-    //     fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${randomDrink.idDrink}`)
-    //       .then((response) => response.json())
-    //       .then((data) => {
-    //         const drinkDetails = data.drinks[0];
-
-    //         populateCard(drinkDetails);
-    //       });
-    //   })
-    //   .catch((error) => {
-    //     console.error('Error:', error);
-    //   });
+    // console.log(drinkType.value, typeof drinkType.value);
+    drinkPreference = drinkType.value;
+    console.log(drinkPreference);
+    getRandom(drinkPreference).then((drink) => {
+      console.log(drink);
+    });
   });
 
-  function createAPIURL(){
-    const drinkOption = drinkType.value;
-    // const actualDrinkType = data[0].str
-    let apiUrl;
-    if (drinkOption === 'Alcoholic') {
-      console.log('Alcoholic');
-    } else if (drinkOption === 'Non-Alcoholic') {
-      console.log('Non-Alcoholic');
+  async function getRandom(preference) {
+    if (preference.toLowerCase() === 'non alcoholic') {
+      const nonAlcoholicDrinksUrl = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic';
+      const response = await fetch(nonAlcoholicDrinksUrl);
+      const data = await response.json();
+      const drinks = data.drinks;
+      const randomIndex = Math.floor(Math.random() * drinks.length);
+      const randomNonAlcoholicDrinkId = drinks[randomIndex].idDrink;
+      const drinkDetailsUrl = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${randomNonAlcoholicDrinkId}`;
+      const drinkResponse = await fetch(drinkDetailsUrl);
+      const drinkData = await drinkResponse.json();
+      return drinkData.drinks[0];
     } else {
-      console.log('No Preference');
-    }
-    apiUrl
-  }
+      const randomUrl = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
+      while (true) {
+        try {
+          const response = await fetch(randomUrl);
+          const data = await response.json();
+          const drink = data.drinks[0];
 
-  function fetchDrinkAPI(apiUrl){
-    fetch(apiUrl)
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data)
-    })
-  }
-
-  function populateCard(drinkDetails) {
-    cardTitle.textContent = drinkDetails.strDrink;
-    drinkImage.src = drinkDetails.strDrinkThumb;
-    drinkImage.alt = drinkDetails.strDrink;
-
-    ingredientsList.innerHTML = '';
-    for (let i = 1; i <= 15; i++) {
-      const ingredient = drinkDetails['strIngredient' + i];
-      const measure = drinkDetails['strMeasure' + i];
-
-      if (ingredient && measure) {
-        const listItem = document.createElement('li');
-        listItem.textContent = `${measure.trim()} - ${ingredient.trim()}`;
-        ingredientsList.appendChild(listItem);
-      } else {
-        break;
+          if (preference.toLowerCase() === 'alcoholic' && drink.strAlcoholic === 'Alcoholic') {
+            return drink;
+          }
+        } catch (error) {
+          console.error('Error fetching drink:', error);
+        }
       }
     }
   }
+
+
+
+  async function getNonAlcoholicDrinkCount() {
+    const nonAlcoholicDrinksUrl = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic';
+    const response = await fetch(nonAlcoholicDrinksUrl);
+    const data = await response.json();
+    const drinks = data.drinks;
+    return drinks.length;
+  }
+
+  getNonAlcoholicDrinkCount().then((count) => {
+    console.log("Number of non-alcoholic drinks:", count);
+  });
+
+  async function getAlcoholicDrinkCount() {
+    const alcoholicDrinksUrl = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic';
+    const response = await fetch(alcoholicDrinksUrl);
+    const data = await response.json();
+    const drinks = data.drinks;
+    return drinks.length;
+  }
+  
+  getAlcoholicDrinkCount().then((count) => {
+    console.log("Number of alcoholic drinks:", count);
+  });
+  
+
 });
-
-
-//This was some testing of the API with console logs 
-
-
-// //Joe's fetch API work for Drinks
-// const API_URL = 'https://www.thecocktaildb.com/api/json/v1/1/';
-
-// // getRandomCocktail();
-// // searchCocktailsByName('Jitterbug');
-// // searchCocktailsByIngredient('Bourbon')
-
-// // Fetch a random cocktail
-// async function getRandomCocktail() {
-//   const response = await fetch(`${API_URL}random.php`);
-//   const data = await response.json();
-//   // console.log(data.drinks[0])
-//   return data.drinks[0];
-// }
-
-// //Search cocktails by name
-// async function searchCocktailsByName(name) {
-//   const response = await fetch(`${API_URL}search.php?s=${name}`);
-//   const data = await response.json();
-//   console.log(data.drinks);
-//   return data.drinks;
-// }
-
-// // Search cocktails by ingredient
-// async function searchCocktailsByIngredient(ingredient) {
-//   const response = await fetch(`${API_URL}filter.php?i=${ingredient}`);
-//   const data = await response.json();
-//   console.log(data.drinks)
-//   return data.drinks;
-// }
-
-// // Get cocktail details by ID
-// // async function getCocktailDetailsById(id) {
-// //   const response = await fetch(`${API_URL}lookup.php?i=${id}`);
-// //   const data = await response.json();
-// //   return data.drinks[0];
-// // }
-
-// //Gets a random drink then logs the ingredients next to the measurements
-// async function randomWithIngredients() {
-//   const cocktailObject = await getRandomCocktail();
-//   console.log(cocktailObject);
-//   ingredientsMeasurementMatch(cocktailObject);
-// }
-
-// // Function to console log the ingredients next to the measurements
-// function ingredientsMeasurementMatch(object) {
-//   // Check if a video link exists and log it
-//   if (object.strVideo) {
-//     console.log(`Video link: ${object.strVideo}`);
-//   } else {
-//     console.log("No video link available.");
-//   }
-
-//   // Log the ingredients and their measurements
-//   for (let i = 1; i <= 15; i++) {
-//     const ingredientKey = `strIngredient${i}`;
-//     const measureKey = `strMeasure${i}`;
-
-//     const ingredient = object[ingredientKey];
-//     const measure = object[measureKey];
-
-//     if (ingredient && ingredient.trim() !== "") {
-//       console.log(`${ingredient}: ${measure ? measure.trim() : "Not specified"}`);
-//     } else {
-//       break;
-//     }
-//   }
-// }
-
-// //function to filter drinks by alcoholic/non-alcoholic
-
-// // Fetch all drinks
-// async function fetchDrinks() {
-//   try {
-//     const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail');
-//     const data = await response.json();
-//     return data.drinks;
-//   } catch (error) {
-//     console.error('Error fetching drinks:', error);
-//     return [];
-//   }
-// }
-
-// // Filter drinks by alcohol content
-// function filterDrinksByAlcohol(drinks, isAlcoholic) {
-//   return drinks.filter(drink => {
-//     if (!drink.strAlcoholic) {
-//       return false;
-//     }
-
-//     if (isAlcoholic) {
-//       return drink.strAlcoholic.toLowerCase() === 'alcoholic';
-//     } else {
-//       return drink.strAlcoholic.toLowerCase() === 'non alcoholic';
-//     }
-//   });
-// }
-
-
-// // Main function to fetch and filter drinks
-// async function main() {
-//   const drinks = await fetchDrinks();
-//   console.log(drinks, typeof drinks)
-//   const alcoholicDrinks = filterDrinksByAlcohol(drinks, true);
-//   const nonAlcoholicDrinks = filterDrinksByAlcohol(drinks, false);
-
-//   console.log('Alcoholic Drinks:', alcoholicDrinks);
-//   console.log('Non-Alcoholic Drinks:', nonAlcoholicDrinks);
-// }
-
-// main();
