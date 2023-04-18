@@ -43,16 +43,14 @@ h1 {
 }
 
 .browser-default {
-  margin: 2rem;
-}
+  border: 2px solid rgba(0, 0, 0, 0.671);
+  margin-top: 2rem;
+} 
 
 /* Side Box */
 
 .searchBtn {
-  margin: 2rem;
-}
-
-.searchBtn {
+  margin-top: 2rem;
   border: none;
   font-size: 15px;
   padding: 0.4rem 0.9rem;
@@ -61,6 +59,6 @@ h1 {
 
 .searchBtn:hover {
   cursor: pointer;
-  box-shadow: 0 0.4rem 1.4rem #53505060;
+  box-shadow: 0 0.4rem 1.4rem #3d3b3b8c;
 }
 
