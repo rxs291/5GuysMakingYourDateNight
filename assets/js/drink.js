@@ -41,15 +41,22 @@ async function main() {
 }
 
 // Function to console log the ingredients next to the measurements
-function ingredientsMeasurementMatch(object){
-  for (key in object){
-    console.log(key, typeof key)
-    if (key.startsWith('strIngredient')) {
-      console.log(object[key])
-    }
+function ingredientsMeasurementMatch(object) {
+  console.log(object)
+  for (let i = 1; i <= 15; i++) {
+    const ingredientKey = `strIngredient${i}`;
+    const measureKey = `strMeasure${i}`;
 
-    if (key.startsWith('strMeasure')) {
-      console.log(object[key])
+    const ingredient = object[ingredientKey];
+    const measure = object[measureKey];
+
+    if (ingredient && ingredient.trim() !== "") {
+      console.log(`${ingredient}: ${measure ? measure.trim() : "Not specified"}`);
+    } else {
+      break;
     }
   }
 }
+
+
+main();
