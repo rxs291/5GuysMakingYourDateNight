@@ -4,11 +4,34 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/css/foundation.min.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
   <title>Document</title>
 </head>
 <body>
   <h1>Drink Test</h1>
-  <div class="container"></div>
+  <div class="grid-container">
+    <div class="grid-x grid-margin-x align-center">
+      <div class="cell medium-6">
+        <div class="card">
+          <div class="card-divider">
+            Card Title
+          </div>
+          <img src="https://via.placeholder.com/300x200" alt="Sample Image">
+          <div class="card-section">
+            <p>This is a sample card with a title, image, and some content.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- <div class="container"></div> -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
   <script src="assets/js/drink.js"></script>
 </body>
 </html>

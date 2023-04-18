@@ -42,7 +42,14 @@ async function main() {
 
 // Function to console log the ingredients next to the measurements
 function ingredientsMeasurementMatch(object) {
-  console.log(object)
+  // Check if a video link exists and log it
+  if (object.strVideo) {
+    console.log(`Video link: ${object.strVideo}`);
+  } else {
+    console.log("No video link available.");
+  }
+
+  // Log the ingredients and their measurements
   for (let i = 1; i <= 15; i++) {
     const ingredientKey = `strIngredient${i}`;
     const measureKey = `strMeasure${i}`;
@@ -57,6 +64,7 @@ function ingredientsMeasurementMatch(object) {
     }
   }
 }
+
 
 
 main();
