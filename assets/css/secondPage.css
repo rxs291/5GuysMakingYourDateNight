@@ -42,6 +42,15 @@ h1 {
   justify-content: left;
 }
 
+.testingContainer {
+  float: right;
+  margin: 2rem;
+}
+
+.cards {
+  margin: 2.5rem;
+}
+
 /* Side Box */
 
 .sideSearchBox {
