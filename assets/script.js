@@ -4,6 +4,7 @@ var mealName = '';
 var youtubeLink = '';
 var thumbnail = '';
 var instructions = '';
+var testingContainer = document.querySelector(".testingContainer")
  
 
 ////this pulls meals by first letter, not for functional use yet
@@ -43,7 +44,7 @@ fetch(requestCatergoryList)
 
 
 async function mealsByName(){  
-
+ 
 fetch(randomMeal)
 .then(function (response) {
   return response.json();
@@ -62,15 +63,15 @@ fetch(randomMeal)
         //////HERE IS WHERE WE WILL MAKE THE ID CARDS WITH INFORMATION PURGED FROM THE API
         mealName = data.meals[i].strMeal          ////THIS PULLS NAME 
         youtubeLink = data.meals[i].strYoutube      //// THIS PULLS YOUTUBE LINK 
-        thumbnail = data.meals[i].strMealThumb     /// THIS PULL THUMBNAIL 
+        thumbnail = data.meals[i].strMealThumb     /// THIS PULLS THUMBNAIL 
         instructions = data.meals[i].strInstructions
         var ingredientList = [];
-        var combinedARR = [];
+        var combinedARR = []; 
 
         console.log(data.meals[i].strMeal)
         console.log(data.meals[i].strYoutube)
         console.log(data.meals[i].strMealThumb)
-        console.log(data.meals[i].strInstructions)
+        console.log(data.meals[i].strInstructions) 
 
 
         ///card container
@@ -110,10 +111,14 @@ fetch(randomMeal)
         card.classList.add('card');
         ////card body
         var cardBody = document.createElement('div');
-        var imageFood = document.createElement('img');
-        imageFood.src = thumbnail;
-        imageFood.width = "15vw";
-        imageFood.float = "center";
+
+
+
+        var imageFood = document.createElement('img'); 
+        imageFood.setAttribute("src", thumbnail) ;
+        console.log(thumbnail)  ;
+        console.log(imageFood.src) ; 
+        imageFood.width = "100"; 
 
         var cardMealName = document.createElement("h5");
         cardMealName.textContent = mealName;
@@ -135,9 +140,10 @@ fetch(randomMeal)
         cardBody.appendChild(cardIngred);
         cardBody.appendChild(cardInstruct);
         cardBody.appendChild(cardTuber);
+        
 
         card.appendChild(cardBody);
-        container.appendChild(card); 
+        testingContainer.appendChild(card); 
  
  
 
