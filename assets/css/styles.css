@@ -51,8 +51,9 @@
     background-color:#A29996 ;
     
   }
-  .foodSearchbar{ß
-    margin: center;
+  
+  .foodSearchbar{
+    margin: 0.5rem;
     padding: 5px;
   }
   .drinkSearchBar{
