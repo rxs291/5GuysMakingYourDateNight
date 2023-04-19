@@ -8,7 +8,7 @@ var testingContainer = document.querySelector(".testingContainer")
 var menu1 = document.querySelector("#menu1");
 var menu2 = document.querySelector("#menu2");
 var myButton = document.querySelector(".searchBtn");
-var categoriesFood = ["Breakfast", "Side","Starter","Dessert", "Beef","Chicken","Pork","Lamb","Goat","Pasta","Seafood","Vegetarian","Vegan","Miscelaneous"]
+var categoriesFood = ["Breakfast", "Side","Starter","Dessert", "Beef","Chicken","Pork","Lamb","Goat","Pasta","Seafood","Vegetarian","Vegan","Random"]
  
 
 ////this pulls meals by first letter, not for functional use yet
@@ -20,7 +20,7 @@ var randomMeal = "https://www.themealdb.com/api/json/v1/1/random.php"
 
 ////requestByName API works WITHOUT HAVING TO REMOVE THE SPACES
 ////THIS IS THE LINK THAT WILL GO INTO mealsByName
-var requestByName = "https://www.themealdb.com/api/json/v1/1/search.php?s=Moussaka" ;
+var requestByName = "https://www.themealdb.com/api/json/v1/1/search.php?s=Ayam Percik" ;
 
 
 var requestCatergoryList = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Beef"
@@ -136,9 +136,9 @@ fetch(x)
  
 
 
-async function mealsByName(x){  
+async function mealsByName(requestByName){  
  
-fetch(x)
+fetch(requestByName)
 .then(function (response) {
   return response.json();
 })
@@ -165,6 +165,24 @@ fetch(x)
         console.log(data.meals[i].strYoutube)
         console.log(data.meals[i].strMealThumb)
         console.log(data.meals[i].strInstructions) 
+
+    //     cardTitle.textContent = data.meals[i].strMeal;
+    //     foodImage.src = data.meals[i].strMealThumb;
+    //     ingredientsList2.innerHTML = '';
+
+    // // Add the instructions to the card
+    //    var instructions2 = document.querySelector('#instructions2');
+    //    instructions2.textContent = data.meals[i].strInstructions;
+  
+    //      for (let i = 1; i <= 15; i++) {
+    //      if (drink[`strIngredient${i}`]) {
+    //     const listItem = document.createElement('li');
+    //     listItem.textContent = `${drink[`strIngredient${i}`]} - ${drink[`strMeasure${i}`]}`;
+    //     ingredientsList.appendChild(listItem);
+    //   } else {
+    //     break;
+    //   }
+    // }
 
 
         ///card container
@@ -218,7 +236,8 @@ fetch(x)
         cardBody.style.display = "block";
         cardBody.style.margin = "0 auto";
         cardBody.style.textAlign = "center"
-        cardBody.style.borderRadius = "25px";  
+        cardBody.style.borderRadius = "25px"; 
+        cardBody.style.overflow = "overflow-wrap"; 
         // cardBody.style.display = "flex";
         // cardBody.style.flexDirection = "column";
 
