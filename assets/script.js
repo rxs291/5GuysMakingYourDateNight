@@ -8,7 +8,7 @@ var testingContainer = document.querySelector(".testingContainer")
 var menu1 = document.querySelector("#menu1");
 var menu2 = document.querySelector("#menu2");
 var myButton = document.querySelector(".searchBtn");
-var categoriesFood = ["Breakfast", "Side","Starter","Dessert", "Beef","Chicken","Pork","Lamb","Goat","Pasta","Seafood","Vegetarian","Vegan","Random"]
+var categoriesFood = ["Breakfast", "Side","Starter","Dessert", "Beef","Chicken","Pork","Lamb","Goat","Pasta","Seafood","Vegetarian","Vegan","Miscellaneous", "Random"]
  
 
 ////this pulls meals by first letter, not for functional use yet
