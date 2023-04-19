@@ -77,4 +77,11 @@ h1 {
   cursor: pointer;
   box-shadow: 0 0.4rem 1.4rem #837b7a60;
 }
+body {
+  background-image: url(../images/kamil-kalbarczyk-19Ft3QfakMo-unsplash.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 200vh;
 
+}
