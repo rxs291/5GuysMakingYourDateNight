@@ -44,35 +44,52 @@ h1 {
 }
 
 .browser-default {
-  border: 2px solid rgba(0, 0, 0, 0.671);
+  border: 2px solid rgba(39, 38, 38, 0.548);
   margin-top: 2rem;
-} 
+}
+
+#searchBars {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid rgba(39, 38, 38, 0.548);
+  margin-top: 3rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+  background-color: rgba(255, 255, 255, 0.575);
+}
 
 /* Side Box */
 
 .searchBtn {
-  margin-top: 2rem;
+  margin: 2rem 0 2rem 0;
   border: none;
   font-size: 15px;
   padding: 0.4rem 0.9rem;
-  border-radius: 5px;
-  outline: 1px #333 solid;
+  border-radius: 0.5rem;
 }
 
 .searchBtn:hover {
   cursor: pointer;
   box-shadow: 0 0.4rem 1.4rem #3d3b3b8c;
 }
+
 body {
-  background-image: url(../images/kamil-kalbarczyk-19Ft3QfakMo-unsplash.jpg);
+  background-image: url(../images/background.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   height: 200vh;
-
-<<<<<<< HEAD
 }
-=======
+
+/* For phones */
+@media (max-width: 767px) {
+  /* CSS rules for phones */
+}
+
+/* For tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* CSS rules for iPads */
+}
+
 /* For phones */
 @media (max-width: 767px) {
   /* CSS rules for phones */
@@ -87,4 +104,3 @@ body {
 @media (min-width: 1024px) {
   /* CSS rules for computers */
 }
->>>>>>> main
