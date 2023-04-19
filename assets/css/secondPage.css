@@ -89,16 +89,6 @@ h1 {
   /* CSS rules for iPads */
 }
 
-/* For phones */
-@media (max-width: 767px) {
-  /* CSS rules for phones */
-}
-
-/* For tablets */
-@media (min-width: 768px) and (max-width: 1023px) {
-  /* CSS rules for iPads */
-}
-
 /* For computers */
 @media (min-width: 1024px) {
   /* CSS rules for computers */
