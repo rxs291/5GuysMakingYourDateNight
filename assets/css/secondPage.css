@@ -63,7 +63,16 @@ h1 {
   cursor: pointer;
   box-shadow: 0 0.4rem 1.4rem #3d3b3b8c;
 }
+body {
+  background-image: url(../images/kamil-kalbarczyk-19Ft3QfakMo-unsplash.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 200vh;
 
+<<<<<<< HEAD
+}
+=======
 /* For phones */
 @media (max-width: 767px) {
   /* CSS rules for phones */
@@ -78,3 +87,4 @@ h1 {
 @media (min-width: 1024px) {
   /* CSS rules for computers */
 }
+>>>>>>> main
