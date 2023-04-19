@@ -10,8 +10,12 @@
 
 .header > * {
   display: flex;
-  background-color: rgba(255, 255, 255, 0.575);
+  background-color: rgba(255, 255, 255, 0.367);
+  color: #372110;
   border-bottom: 1px solid #333;
+  padding-bottom: 2vh;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 body {
