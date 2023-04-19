@@ -18,7 +18,8 @@
         </div>
       </div>
       <div class="row">
-        <div class="col s12 m4 l4">
+        <!--Dropdowns-->
+        <div class="col s12 m4 l4" id = "searchBars">
           <select class="browser-default">
             <option value="" disabled selected>Food Options</option>
             <option value="1">Breakfast</option>
@@ -41,10 +42,34 @@
             <option value="1">Non-Alcoholic</option>
             <option value="2">Alcoholic</option>
           </select>
+          <!--Generate Button-->
           <button type = "button" class = "searchBtn">Generate</button>
         </div>
+        <!--Container for Cards-->
         <div class="col s12 m4 l4">Food column</div>
-        <div class="col s12 m4 l4">Drink column</div>
+        <div class="col s12 m4 l4">
+          
+          <!-- Card Vertical -->
+          <div id="vertical-card-container" class="cardRow">
+              <div class="card">
+                <div class="card-image">
+                  <img src="https://via.placeholder.com/150" alt="Image description">
+                </div>
+                <div class="card-content">
+                  <span class="card-title" id="card-title">Card Title</span>
+                  <h4>Ingredients:</h4>
+                  <ul id="ingredients-list">
+                    <li>1 oz - Ingredient 1</li>
+                    <li>2 oz - Ingredient 2</li>
+                    <li>1/2 oz - Ingredient 3</li>
+                  </ul>
+                  <p id="instructions">
+                    <!-- Drink instructions will be added here -->
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div></div>
       </div>
 
       <!-- Materializ Script Link -->
