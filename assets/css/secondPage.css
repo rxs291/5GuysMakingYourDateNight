@@ -43,18 +43,27 @@ h1 {
 }
 
 .browser-default {
-  border: 2px solid rgba(0, 0, 0, 0.671);
+  border: 2px solid rgba(39, 38, 38, 0.548);
   margin-top: 2rem;
-} 
+}
+
+#searchBars {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid rgba(39, 38, 38, 0.548);
+  margin-top: 3rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+  background-color: rgba(255, 255, 255, 0.575);
+}
 
 /* Side Box */
 
 .searchBtn {
-  margin-top: 2rem;
+  margin: 2rem 0 2rem 0;
   border: none;
   font-size: 15px;
   padding: 0.4rem 0.9rem;
-  border-radius: 5px;
+  border-radius: 0.5rem;
 }
 
 .searchBtn:hover {
