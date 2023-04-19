@@ -3,7 +3,8 @@
   padding: 0;
   margin: 0;
 }
-/* The webpage is accessible to a screen size down to 320px */
+
+
 @media screen and (min-width:320px) {
   body {
     background-image: url(../kamil-kalbarczyk-19Ft3QfakMo-unsplash.jpg);

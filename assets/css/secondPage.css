@@ -6,18 +6,19 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  color: #5a3e28;
+  /* color: #5a3e28; */
 }
 
 .header > * {
   display: flex;
   background-color: rgba(255, 255, 255, 0.575);
-  border-bottom: 2px solid #333;
+  border-bottom: 1px solid #333;
 }
 
+
 h1 {
-  margin-top: 5rem;
-  margin-bottom: 5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .flex-column {
@@ -42,40 +43,25 @@ h1 {
   justify-content: left;
 }
 
-.testingContainer {
-  float: right;
-  margin: 2rem;
-}
-
-.cards {
-  margin: 2.5rem;
-}
+.browser-default {
+  border: 2px solid rgba(0, 0, 0, 0.671);
+  margin-top: 2rem;
+} 
 
 /* Side Box */
 
-.sideSearchBox {
-  float: left;
-  margin: 3rem;
-  border: 3px solid rgba(0, 0, 0, 0.534);
-  border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.575);
-  padding: 3rem 1rem 2.5rem 1rem;
-}
-
-.searchBar, .searchBtn {
-  margin: 1rem;
-}
-
 .searchBtn {
+  margin-top: 2rem;
   border: none;
   font-size: 15px;
   padding: 0.4rem 0.9rem;
   border-radius: 5px;
+  outline: 1px #333 solid;
 }
 
 .searchBtn:hover {
   cursor: pointer;
-  box-shadow: 0 0.4rem 1.4rem #837b7a60;
+  box-shadow: 0 0.4rem 1.4rem #3d3b3b8c;
 }
 body {
   background-image: url(../images/kamil-kalbarczyk-19Ft3QfakMo-unsplash.jpg);
@@ -84,4 +70,21 @@ body {
   background-size: cover;
   height: 200vh;
 
+<<<<<<< HEAD
 }
+=======
+/* For phones */
+@media (max-width: 767px) {
+  /* CSS rules for phones */
+}
+
+/* For tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* CSS rules for iPads */
+}
+
+/* For computers */
+@media (min-width: 1024px) {
+  /* CSS rules for computers */
+}
+>>>>>>> main
