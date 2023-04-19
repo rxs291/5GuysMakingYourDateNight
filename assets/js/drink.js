@@ -9,7 +9,11 @@ document.addEventListener('DOMContentLoaded', function () {
   const cardTitle = document.querySelector('#card-title');
   const drinkImage = document.querySelector('#imageDrink');
   const ingredientsList = document.querySelector('#ingredients-list');
+
   ///ADDING FOOD VARIABLES FOR SECOND CARD///////////
+
+
+
   const cardTitle2 = document.querySelector('#card-title2');
   const foodImage = document.querySelector('#imageFood');
   const ingredientsList2 = document.querySelector('#ingredients-list2');
@@ -63,7 +67,7 @@ async function getRandom(preference) {
     const drinkData = await drinkResponse.json();
     return drinkData.drinks[0];
   } else {
-    randomUrl = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
+    const randomUrl = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
     while (true) {
       try {
         const response = await fetch(randomUrl);
