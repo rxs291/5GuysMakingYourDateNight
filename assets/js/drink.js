@@ -7,16 +7,30 @@ document.addEventListener('DOMContentLoaded', function () {
   const cardTitle = document.querySelector('#card-title');
   const drinkImage = document.querySelector('img');
   const ingredientsList = document.querySelector('#ingredients-list');
+  ///ADDING FOOD VARIABLES FOR SECOND CARD///////////
+  const cardTitle2 = document.querySelector('#card-title2');
+  const foodImage = document.querySelector('#imageFood');
+  const ingredientsList2 = document.querySelector('#ingredients-list2');
+  const youtubeVideo = document.querySelector('#youtubeVideo');
+  const randomMeal = "https://www.themealdb.com/api/json/v1/1/random.php"
+
+  getRandomMeal();
 
   submitButton.addEventListener('click', function (e) {
     e.preventDefault();
     // console.log(drinkType.value, typeof drinkType.value);
+
     drinkPreference = drinkType.value;
     console.log(drinkPreference);
     getRandom(drinkPreference).then((drink) => {
       console.log(drink);
       updateDrinkDetails(drink);
+
+
+
+
     });
+     
   });
 
   async function getRandom(preference) {
@@ -95,4 +109,44 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   
 
-});
+
+
+
+  function getRandomMeal(){
+    fetch(randomMeal)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);   
+      meal1 =  data.meals[0];
+
+      mealName = meal1.strMeal          ////THIS PULLS NAME 
+      youtubeLink = meal1.strYoutube      //// THIS PULLS YOUTUBE LINK 
+      thumbnail = meal1.strMealThumb     /// THIS PULLS THUMBNAIL  
+      
+      cardTitle2.textContent = mealName;
+      foodImage.src = thumbnail;
+      if(youtubeVideo){
+      youtubeVideo.innerHTML = `<a href ="` + youtubeLink + `" >Video available here!</a>`;
+      }
+      ingredientsList2.innerHTML = '';
+  
+      // Add the instructions to the card
+      const instructions = document.querySelector('#instructions2');
+      instructions.textContent = meal1.strInstructions;
+      for (let i = 1; i <= 20; i++) {
+        if (meal1[`strIngredient${i}`]) {
+          const listItem = document.createElement('li');
+          listItem.textContent = `${meal1[`strIngredient${i}`]} - ${meal1[`strMeasure${i}`]}`;
+          ingredientsList2.appendChild(listItem);
+        } else {
+          break;
+
+        }
+      } 
+    })
+
+}
+}
+);
