@@ -50,11 +50,11 @@
                 </select>
                 <select id="menu2" class="browser-default">
                     <option value="" disabled selected>Drink Options</option>
-                    <option value="1">Non-Alcoholic</option>
-                    <option value="2">Alcoholic</option>
+                    <option value="Non Alcoholic">Non-Alcoholic</option>
+                    <option value="Alcoholic">Alcoholic</option>
                 </select>
                 <!--Generate Button-->
-                <button type="button" class="searchBtn">Generate</button>
+                <button id="submit-btn" type="button" class="searchBtn">Generate</button>
             </div>
             <!--Container for food cards-->
             <div class="col s12 m4 l4">
@@ -97,6 +97,7 @@
                     <div class="card">
                         <div class="card-image">
                             <img
+                                id = "imageDrink"
                                 src="https://via.placeholder.com/150"
                                 alt="Image description"
                             />

@@ -3,9 +3,9 @@ document.addEventListener('DOMContentLoaded', function () {
   var elems = document.querySelectorAll('select');
   var instances = M.FormSelect.init(elems);
   const submitButton = document.querySelector('#submit-btn');
-  const drinkType = document.querySelector('#drink-select');
+  const drinkType = document.querySelector('#menu2');
   const cardTitle = document.querySelector('#card-title');
-  const drinkImage = document.querySelector('img');
+  const drinkImage = document.querySelector('#imageDrink');
   const ingredientsList = document.querySelector('#ingredients-list');
   ///ADDING FOOD VARIABLES FOR SECOND CARD///////////
   const cardTitle2 = document.querySelector('#card-title2');
@@ -146,7 +146,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       } 
     })
-
-}
+  }
 }
 );
