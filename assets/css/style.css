@@ -29,6 +29,7 @@ body {
 h1 {
   margin-top: 2rem;
   margin-bottom: 2rem;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .flex-column {
@@ -86,6 +87,47 @@ h1 {
   box-shadow: 0 0.4rem 1.4rem #3d3b3b8c;
 }
 
+#history-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  align-items: center;
+}
+
+#history-container button {
+  margin: 5px;
+  background-color: #ffffff77;
+  color: #000000;
+  padding: 6px;
+  border: none;
+  border-radius: 2px;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  transition: background-color 0.2s ease-in-out;
+  font-family: sans-serif
+}
+
+#submit-btn {
+  margin: 20px;
+  margin-top: 40px;
+  background: rgb(133, 39, 39);
+}
+
+#save-btn {
+  margin: 20px;
+  background: rgb(133, 39, 39);
+}
+
+#menu1:hover {
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+#menu2:hover {
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+}
 
 /* For phones */
 @media (max-width: 767px) {
