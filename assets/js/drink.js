@@ -11,9 +11,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const ingredientsList = document.querySelector('#ingredients-list');
 
   ///ADDING FOOD VARIABLES FOR SECOND CARD///////////
-
-
-
   const cardTitle2 = document.querySelector('#card-title2');
   const foodImage = document.querySelector('#imageFood');
   const ingredientsList2 = document.querySelector('#ingredients-list2');
@@ -22,8 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const randomMeal = "https://www.themealdb.com/api/json/v1/1/random.php"
 
-
-  ////THIS IS THE GENERATE BUTTON THAT ACTIVIATES ON USER SELECTION IN THE MENUS.
+  //THIS IS THE GENERATE BUTTON THAT ACTIVATES ON USER SELECTION IN THE MENUS.
   submitButton.addEventListener('click', function (e) {
     e.preventDefault();
 
@@ -54,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
   });
-
+  // This function generates a random drink based on user preference
   async function getRandom(preference) {
     if (preference.toLowerCase() === 'non alcoholic') {
       const nonAlcoholicDrinksUrl = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic';
@@ -84,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
   }
-
+  //This Function Updates the drink card 
   function updateDrinkDetails(drink) {
     cardTitle.textContent = drink.strDrink;
     drinkImage.src = drink.strDrinkThumb;
@@ -187,15 +183,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Save the combination to local storage
     let savedCombinations = JSON.parse(localStorage.getItem('combinations')) || [];
-    savedCombinations.push({ meal: currentMeal, drink: currentDrink });
-    localStorage.setItem('combinations', JSON.stringify(savedCombinations));
+    // Save the combination to local storage if it doesn't already exist
+    if (!combinationExists(savedCombinations, currentMeal, currentDrink)) {
+      savedCombinations.push({ meal: currentMeal, drink: currentDrink });
+      localStorage.setItem('combinations', JSON.stringify(savedCombinations));
 
-    // Create a history button for the saved combination
-    createHistoryButton(currentMeal, currentDrink);
+      // Create a history button for the saved combination
+      createHistoryButton(currentMeal, currentDrink);
+    }
   }
-
+  //This function creates the history buttons
   function createHistoryButton(meal, drink) {
-    const historyButtonsContainer = document.querySelector('#searchBars');
+    const historyButtonsContainer = document.querySelector('#history-container');
 
     // Create a new button element
     const historyButton = document.createElement('button');
@@ -211,7 +210,7 @@ document.addEventListener('DOMContentLoaded', function () {
     historyButtonsContainer.appendChild(historyButton);
   }
 
-  //function to generate a history button with the saved information
+  //function to update meal and drink cards
   function updateMealAndDrink(meal, drink) {
     // Update meal details
     cardTitle2.textContent = meal.name;
@@ -227,40 +226,28 @@ document.addEventListener('DOMContentLoaded', function () {
     ingredientsList.innerHTML = drink.ingredients.map(ingredient => `<li>${ingredient}</li>`).join('');
   }
 
-  // Load saved combinations and create history buttons
-  function loadSavedCombinations() {
-    const savedCombinations = JSON.parse(localStorage.getItem('combinations')) || [];
-    savedCombinations.forEach(combination => {
-      createHistoryButton(combination.meal, combination.drink);
+
+
+  // Add this function to check for existing combinations
+  function combinationExists(savedCombinations, meal, drink) {
+    return savedCombinations.some(combination => {
+      return (
+        combination.meal.name === meal.name &&
+        combination.drink.name === drink.name
+      );
     });
   }
 
-  // Call the loadSavedCombinations function when the page is loaded
-  document.addEventListener('DOMContentLoaded', loadSavedCombinations);
+
 
 });
 
 
-// async function getNonAlcoholicDrinkCount() {
-//   const nonAlcoholicDrinksUrl = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic';
-//   const response = await fetch(nonAlcoholicDrinksUrl);
-//   const data = await response.json();
-//   const drinks = data.drinks;
-//   return drinks.length;
-// }
-
-// getNonAlcoholicDrinkCount().then((count) => {
-//   console.log("Number of non-alcoholic drinks:", count);
-// });
-
-// async function getAlcoholicDrinkCount() {
-//   const alcoholicDrinksUrl = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic';
-//   const response = await fetch(alcoholicDrinksUrl);
-//   const data = await response.json();
-//   const drinks = data.drinks;
-//   return drinks.length;
-// }
-
-// getAlcoholicDrinkCount().then((count) => {
-//   console.log("Number of alcoholic drinks:", count);
-// });
+document.addEventListener('DOMContentLoaded', loadSavedCombinations);
+// Load saved combinations and create history buttons
+function loadSavedCombinations() {
+  const savedCombinations = JSON.parse(localStorage.getItem('combinations')) || [];
+  savedCombinations.forEach(combination => {
+    createHistoryButton(combination.meal, combination.drink);
+  });
+}
