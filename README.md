@@ -11,33 +11,22 @@ On the click of a single button can generate 1 random meal and drink recipe to t
 
 ## Authors and acknowledgment
 
-- Front-End Specialists 
+### Front-End Specialists 
 * Davyn Inthavong
 * Walker Logan
 * Jakub Emerson
  
-- Back-End Specialists
+### Back-End Specialists
 * Joseph McKinney
 * Rex (Ki) Sarchan
 
+## Our Visual 
 ## ![Full Page Screenshot](./assets/images/1682008205626.png)
 
+ 
+ ## The Future
+Eventually, we would like to have more interaction with the cards that are generated on the website. We would like the user to be able to dive into any listed drop down category and choose from a list of dynamically created cards of ALL the available recipes of that category. (i.e. Click on the "Beef" category would dynamically create a card for every available recipe with beef in it for the user to browse and use. Save what the like into "Favorites" for future use. Lastly a comments section to review recipes for future users, or changes and additions that they made to make things better!) 
 
-You can also make use of visual aids by including materials like screenshots to show examples of the running project and also the structure and design principles used in your project.
-
-
-Here are some guide questions that will help you out:
-
-What was your motivation?
-Why did you build this project?
-What problem does it solve?
-What did you learn?
-What makes your project stand out?
-If your project has a lot of features, consider adding a "Features" section and listing them here.
-Visuals
-
-
-References
-
+## References 
 © 2023 TheMealDB 
 © 2023 TheCocktailDB.
