@@ -79,19 +79,6 @@ h1 {
 
 /* Side Box */
 
-.searchBtn {
-  margin: 2rem 0 2rem 0;
-  border: none;
-  font-size: 15px;
-  padding: 0.4rem 0.9rem;
-  border-radius: 0.5rem;
-}
-
-.searchBtn:hover {
-  cursor: pointer;
-  box-shadow: 0 0.4rem 1.4rem #3d3b3b8c;
-}
-
 #history-container {
   display: flex;
   flex-direction: column;
@@ -131,6 +118,10 @@ h1 {
 #clear-btn {
   margin: 20px;
   background: rgb(133, 39, 39); 
+}
+
+#submit-btn:hover, #save-btn:hover, #clear-btn:hover {
+  box-shadow: 0 2px 3px 3px rgba(71, 71, 71, 0.5);
 }
 
 #menu1:hover {
