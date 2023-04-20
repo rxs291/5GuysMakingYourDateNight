@@ -23,8 +23,8 @@ document.addEventListener('DOMContentLoaded', function () {
   //THIS IS THE GENERATE BUTTON THAT ACTIVATES ON USER SELECTION IN THE MENUS.
   submitButton.addEventListener('click', function (e) {
     e.preventDefault();
-    cardContainer1.style.display = "block"; 
-    cardContainer2.style.display = "block"; 
+    // cardContainer1.style.display = "block"; 
+    // cardContainer2.style.display = "block"; 
 
 
     const foodPreference = foodType.value
