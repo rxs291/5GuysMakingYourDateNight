@@ -96,7 +96,7 @@ h1 {
   display: flex;
   flex-direction: column;
   padding: 20px;
-  align-items: center;
+  align-items: center; 
 }
 
 #history-container button {
@@ -113,6 +113,10 @@ h1 {
   font-family: sans-serif
 }
 
+#clear-container {
+  display: none;
+}
+
 #submit-btn {
   margin: 20px;
   margin-top: 40px;
@@ -122,6 +126,11 @@ h1 {
 #save-btn {
   margin: 20px;
   background: rgb(133, 39, 39);
+}
+
+#clear-btn {
+  margin: 20px;
+  background: rgb(133, 39, 39); 
 }
 
 #menu1:hover {

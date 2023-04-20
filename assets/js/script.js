@@ -9,6 +9,10 @@ document.addEventListener('DOMContentLoaded', function () {
   const cardTitle = document.querySelector('#card-title');
   const drinkImage = document.querySelector('#imageDrink');
   const ingredientsList = document.querySelector('#ingredients-list');
+  var addSaveButton = true;
+  const clearContainer = document.querySelector("#clear-container")
+  const clearButton = document.querySelector('#clear-btn')
+  const historyButtonsContainer = document.querySelector('#history-container');
 
   ///ADDING FOOD VARIABLES FOR SECOND CARD///////////
   const cardTitle2 = document.querySelector('#card-title2');
@@ -181,6 +185,7 @@ document.addEventListener('DOMContentLoaded', function () {
     cardContainer1.style.display = "block";
     cardContainer2.style.display = "block";
 
+
     const currentMeal = {
       name: cardTitle2.textContent,
       image: foodImage.src,
@@ -206,10 +211,11 @@ document.addEventListener('DOMContentLoaded', function () {
       // Create a history button for the saved combination
       createHistoryButton(currentMeal, currentDrink);
     }
+    historyCheck ()
   }
   //This function creates the history buttons
   function createHistoryButton(meal, drink) {
-    const historyButtonsContainer = document.querySelector('#history-container');
+    
 
     // Create a new button element
     const historyButton = document.createElement('button');
@@ -226,6 +232,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Append the history button to the container
     historyButtonsContainer.appendChild(historyButton);
+
+
   }
 
   //function to update meal and drink cards
@@ -303,6 +311,29 @@ document.addEventListener('DOMContentLoaded', function () {
     updateMealAndDrink(lastDisplayedMeal, lastDisplayedDrink);
   }
 
+ 
+  function historyCheck () {
+  console.log(addSaveButton)
+  console.log(historyButtonsContainer.children[0] && addSaveButton)
+  if (historyButtonsContainer.children[0] && addSaveButton){
+    console.log("This Works")
+    addSaveButton = false;
+    clearContainer.style.display = "block";
+  }
+
+  clearButton.addEventListener('click', function () {
+    localStorage.clear(); 
+    historyButtonsContainer.innerHTML = "";
+    clearContainer.style.display = "none";
+    addSaveButton = true;
+  });
+  }
+
+
+
 });
+
+
+ 
 
 
