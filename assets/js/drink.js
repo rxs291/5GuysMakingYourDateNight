@@ -99,8 +99,10 @@ document.addEventListener('DOMContentLoaded', function () {
         break;
       }
     }
+    //Save current drink to local storage
+    localStorage.setItem('lastDisplayedDrink', JSON.stringify(drink));
   }
-
+  //this function fetches the meal data and adds it to the meal card
   function getMeal(x) {
     fetch(x)
       .then(function (response) {
@@ -108,6 +110,8 @@ document.addEventListener('DOMContentLoaded', function () {
       })
       .then(function (data) {
         meal1 = data.meals[0];
+        //Stores the current meal into local storage
+        localStorage.setItem('lastDisplayedMeal', JSON.stringify(meal1));
 
         mealName = meal1.strMeal          ////THIS PULLS NAME 
         youtubeLink = meal1.strYoutube      //// THIS PULLS YOUTUBE LINK 
@@ -133,9 +137,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
           }
         }
+
       })
   }
-
+  //this function generates a list of meals by catagory
+  //chooses a random meal, and gets the specific meal based on id
   function generateListfromCatergory(apiURL) {
     fetch(apiURL)
       .then(function (response) {
@@ -149,6 +155,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       })
   }
+  //This function takes advantage of the drink API's random query to get a random drink
   function generateRandomDrink() {
     fetch(randomUrl)
       .then(function (response) {
@@ -198,7 +205,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Create a new button element
     const historyButton = document.createElement('button');
-    historyButton.className = 'history-btn';
+    historyButton.classList.add = ('btn', 'waves-effect', 'history-btn');
     historyButton.textContent = `Meal: ${meal.name}, Drink: ${drink.name}`;
 
     // Set the event listener for the history button
@@ -213,22 +220,50 @@ document.addEventListener('DOMContentLoaded', function () {
   //function to update meal and drink cards
   function updateMealAndDrink(meal, drink) {
     // Update meal details
-    cardTitle2.textContent = meal.name;
-    foodImage.src = meal.image;
-    instructions2.textContent = meal.instructions;
-    youtubeVideo.innerHTML = meal.youtubeLink ? `<a href="${meal.youtubeLink}">Video available here!</a>` : '';
-    ingredientsList2.innerHTML = meal.ingredients.map(ingredient => `<li>${ingredient}</li>`).join('');
-
+    cardTitle2.textContent = meal.name || meal.strMeal;
+    foodImage.src = meal.image || meal.strMealThumb;
+    instructions2.textContent = meal.instructions || meal.strInstructions;
+    youtubeVideo.innerHTML = meal.youtubeLink || (meal.strYoutube ? `<a href="${meal.strYoutube}">Video available here!</a>` : '');
+    ingredientsList2.innerHTML = '';
+    if (Array.isArray(meal.ingredients)) {
+      ingredientsList2.innerHTML = meal.ingredients.map(ingredient => `<li>${ingredient}</li>`).join('');
+    } else {
+      for (let i = 1; i <= 20; i++) {
+        if (meal[`strIngredient${i}`]) {
+          const listItem = document.createElement('li');
+          listItem.textContent = `${meal[`strIngredient${i}`]} - ${meal[`strMeasure${i}`]}`;
+          ingredientsList2.appendChild(listItem);
+        } else {
+          break;
+        }
+      }
+    }
+  
     // Update drink details
-    cardTitle.textContent = drink.name;
-    drinkImage.src = drink.image;
-    instructions.textContent = drink.instructions;
-    ingredientsList.innerHTML = drink.ingredients.map(ingredient => `<li>${ingredient}</li>`).join('');
+    cardTitle.textContent = drink.name || drink.strDrink;
+    drinkImage.src = drink.image || drink.strDrinkThumb;
+    instructions.textContent = drink.instructions || drink.strInstructions;
+    ingredientsList.innerHTML = '';
+    if (Array.isArray(drink.ingredients)) {
+      ingredientsList.innerHTML = drink.ingredients.map(ingredient => `<li>${ingredient}</li>`).join('');
+    } else {
+      for (let i = 1; i <= 15; i++) {
+        if (drink[`strIngredient${i}`]) {
+          const listItem = document.createElement('li');
+          listItem.textContent = `${drink[`strIngredient${i}`]} - ${drink[`strMeasure${i}`]}`;
+          ingredientsList.appendChild(listItem);
+        } else {
+          break;
+        }
+      }
+    }
   }
+  
+  
 
 
 
-  // Add this function to check for existing combinations
+  // This function to check for existing combinations
   function combinationExists(savedCombinations, meal, drink) {
     return savedCombinations.some(combination => {
       return (
@@ -237,17 +272,26 @@ document.addEventListener('DOMContentLoaded', function () {
       );
     });
   }
+  // Load saved combinations and create history buttons
+  function loadSavedCombinations() {
+    const savedCombinations = JSON.parse(localStorage.getItem('combinations')) || [];
+    savedCombinations.forEach(combination => {
+      createHistoryButton(combination.meal, combination.drink);
+    });
+  }
 
+  // This function reloads the last cards on the screen on load/refresh from local storage
+  loadSavedCombinations();
 
+  const lastDisplayedMealJSON = localStorage.getItem('lastDisplayedMeal');
+  const lastDisplayedDrinkJSON = localStorage.getItem('lastDisplayedDrink');
+
+  if (lastDisplayedMealJSON && lastDisplayedDrinkJSON) {
+    const lastDisplayedMeal = JSON.parse(lastDisplayedMealJSON);
+    const lastDisplayedDrink = JSON.parse(lastDisplayedDrinkJSON);
+    updateMealAndDrink(lastDisplayedMeal, lastDisplayedDrink);
+  }
 
 });
 
 
-document.addEventListener('DOMContentLoaded', loadSavedCombinations);
-// Load saved combinations and create history buttons
-function loadSavedCombinations() {
-  const savedCombinations = JSON.parse(localStorage.getItem('combinations')) || [];
-  savedCombinations.forEach(combination => {
-    createHistoryButton(combination.meal, combination.drink);
-  });
-}
