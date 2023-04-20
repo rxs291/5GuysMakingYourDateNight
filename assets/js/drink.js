@@ -52,56 +52,6 @@ document.addEventListener('DOMContentLoaded', function () {
       getMeal(randomMeal);
     }
 
-<<<<<<< HEAD
-async function getAlcoholicDrinkCount() {
-  const alcoholicDrinksUrl = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic';
-  const response = await fetch(alcoholicDrinksUrl);
-  const data = await response.json();
-  const drinks = data.drinks;
-  return drinks.length;
-}
-
-getAlcoholicDrinkCount().then((count) => {
-  console.log("Number of alcoholic drinks:", count);
-});
-
-
-
-
-
-function getMeal(x) {
-  fetch(x)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      console.log(data.meals)
-      meal1 = data.meals[0];
-
-      mealName = meal1.strMeal          ////THIS PULLS NAME 
-      youtubeLink = meal1.strYoutube      //// THIS PULLS YOUTUBE LINK 
-      thumbnail = meal1.strMealThumb     /// THIS PULLS THUMBNAIL  
-
-      cardTitle2.textContent = mealName;
-      foodImage.src = thumbnail;
-      if (youtubeLink) {
-        youtubeVideo.innerHTML = `<a href ="` + youtubeLink + `" >Video available here!</a>`;
-      }
-
-      ingredientsList2.innerHTML = '';
-
-      // Add the instructions to the card
-      const instructions = document.querySelector('#instructions2');
-
-      instructions.textContent = meal1.strInstructions;
-      for (let i = 1; i <= 20; i++) {
-        if (meal1[`strIngredient${i}`]) {
-          const listItem = document.createElement('li');
-          listItem.textContent = `${meal1[`strIngredient${i}`]} - ${meal1[`strMeasure${i}`]}`;
-          ingredientsList2.appendChild(listItem);
-        } else {
-          break;
-=======
   });
   // This function generates a random drink based on user preference
   async function getRandom(preference) {
@@ -123,7 +73,6 @@ function getMeal(x) {
           const response = await fetch(randomUrl);
           const data = await response.json();
           const drink = data.drinks[0];
->>>>>>> 95b0f75f2f7c516d05c71cb0919b4d6af15a052b
 
           if (preference.toLowerCase() === 'alcoholic' && drink.strAlcoholic === 'Alcoholic') {
             return drink;
