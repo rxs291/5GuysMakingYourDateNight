@@ -365,4 +365,5 @@ document.addEventListener("DOMContentLoaded", function () {
             addSaveButton = true;
         });
     }
+    historyCheck();
 });
