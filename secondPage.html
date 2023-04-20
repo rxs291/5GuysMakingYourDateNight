@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/secondPage.css" />
+
+    <!-- Materialize CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <!-- Materialize Icons -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- Materialize JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Five Guys Plan your Date Night</title>
+  </head>
+
+  <body>
+    <div class="header">
+      <div id="mainTitle" class="flex-center">
+        <h1>Five Guys Plan Your Date Night</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12 m4 l4" id="searchBars">
+        <select id="menu1" class="browser-default">
+          <option value="" disabled selected>Food Options</option>
+          <option value="1">Breakfast</option>
+          <option value="2">Side</option>
+          <option value="3">Starter</option>
+          <option value="4">Dessert</option>
+          <option value="5">Beef</option>
+          <option value="6">Chicken</option>
+          <option value="7">Pork</option>
+          <option value="8">Lamb</option>
+          <option value="9">Goat</option>
+          <option value="10">Pasta</option>
+          <option value="11">Seafood</option>
+          <option value="12">Vegetarian</option>
+          <option value="13">Vegan</option>
+          <option value="14">Miscellaneous</option>
+          <option value="15">Random</option>
+        </select>
+        <select id="menu2" class="browser-default">
+          <option value="" disabled selected>Drink Options</option>
+          <option value="Non Alcoholic">Non-Alcoholic</option>
+          <option value="Alcoholic">Alcoholic</option>
+        </select>
+        <!--Generate Button-->
+        <button id="submit-btn" type="button" class="btn waves-effect">
+          Generate
+        </button>
+        <!-- Save Button -->
+        <button id="save-btn" type="button" class="btn waves-effect">
+          Save
+        </button>
+        <div id="history-container">
+          <!-- History Buttons go Here -->
+        </div>
+      </div>
+      <!--Container for food cards-->
+      <div class="col s12 m4 l4" id="cardContainer">
+        <!--Makes food cards vertical-->
+        <div id="vertical-card-container" class="cardRow">
+          <div class="card">
+            <div class="card-image">
+              <img
+                id="imageFood"
+                src="https://via.placeholder.com/150"
+                alt="Food Image"
+              />
+            </div>
+            <div class="card-content">
+              <span class="card-title" id="card-title2">Card Title</span>
+              <h4>Ingredients:</h4>
+              <ul id="ingredients-list2">
+                <li>1 oz - Ingredient 1</li>
+                <li>2 oz - Ingredient 2</li>
+                <li>1/2 oz - Ingredient 3</li>
+              </ul>
+              <p id="instructions2">
+                <!-- Food instructions will be added here -->
+              </p>
+              <br />
+              <p id="youtubeVideo">
+                <!-- Food instructions will be added here -->
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--Container for drink cards-->
+      <div class="col s12 m4 l4" id="cardContainer">
+        <!--Makes drink cards vertical-->
+        <div id="vertical-card-container" class="cardRow">
+          <div class="card">
+            <div class="card-image">
+              <img
+                id="imageDrink"
+                src="https://via.placeholder.com/150"
+                alt="Image description"
+              />
+            </div>
+            <div class="card-content">
+              <span class="card-title" id="card-title">Card Title</span>
+              <h4>Ingredients:</h4>
+              <ul id="ingredients-list">
+                <li>1 oz - Ingredient 1</li>
+                <li>2 oz - Ingredient 2</li>
+                <li>1/2 oz - Ingredient 3</li>
+              </ul>
+              <p id="instructions">
+                <!-- Drink instructions will be added here -->
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Materializ Script Link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  </body>
+  <script src="./assets/js/drink.js"></script>
+</html>
