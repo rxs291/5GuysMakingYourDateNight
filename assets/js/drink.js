@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
   var elems = document.querySelectorAll('select');
   var instances = M.FormSelect.init(elems);
   const submitButton = document.querySelector('#submit-btn');
+  const cardContainer1 = document.querySelector('#cardContainer1');
+  const cardContainer2 = document.querySelector('#cardContainer2');
   const drinkType = document.querySelector('#menu2');
   const foodType = document.querySelector('#menu1')
   const cardTitle = document.querySelector('#card-title');
@@ -18,14 +20,15 @@ document.addEventListener('DOMContentLoaded', function () {
   const foodImage = document.querySelector('#imageFood');
   const ingredientsList2 = document.querySelector('#ingredients-list2');
   const youtubeVideo = document.querySelector('#youtubeVideo');
-  categoriesFood = ["Breakfast", "Side", "Starter", "Dessert", "Beef", "Chicken", "Pork", "Lamb", "Goat", "Pasta", "Seafood", "Vegetarian", "Vegan", "Miscellaneous", "Random"]
-
+  const categoriesFood = ["Breakfast", "Side", "Starter", "Dessert", "Beef", "Chicken", "Pork", "Lamb", "Goat", "Pasta", "Seafood", "Vegetarian", "Vegan", "Miscellaneous", "Random"] 
   const randomMeal = "https://www.themealdb.com/api/json/v1/1/random.php"
 
 
   ////THIS IS THE GENERATE BUTTON THAT ACTIVIATES ON USER SELECTION IN THE MENUS.
   submitButton.addEventListener('click', function (e) {
     e.preventDefault();
+    cardContainer1.style.display = "block"; 
+    cardContainer2.style.display = "block"; 
 
 
     const foodPreference = foodType.value
@@ -139,6 +142,7 @@ function getMeal(x) {
       return response.json();
     })
     .then(function (data) {
+      console.log(data.meals)
       meal1 = data.meals[0];
 
       mealName = meal1.strMeal          ////THIS PULLS NAME 
@@ -150,10 +154,12 @@ function getMeal(x) {
       if (youtubeLink) {
         youtubeVideo.innerHTML = `<a href ="` + youtubeLink + `" >Video available here!</a>`;
       }
+
       ingredientsList2.innerHTML = '';
 
       // Add the instructions to the card
       const instructions = document.querySelector('#instructions2');
+
       instructions.textContent = meal1.strInstructions;
       for (let i = 1; i <= 20; i++) {
         if (meal1[`strIngredient${i}`]) {
