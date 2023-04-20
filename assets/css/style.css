@@ -68,8 +68,13 @@ h1 {
   background-color: rgba(255, 255, 255, 0.575);
 }
 
-#cardContainer {
+#cardContainer1 {
   margin-top: 2.6rem;
+  display: none;
+}
+#cardContainer2 {
+  margin-top: 2.6rem;
+  display: none;
 }
 
 /* Side Box */

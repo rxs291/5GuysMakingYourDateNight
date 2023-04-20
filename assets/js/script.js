@@ -16,13 +16,18 @@ document.addEventListener('DOMContentLoaded', function () {
   const ingredientsList2 = document.querySelector('#ingredients-list2');
   const youtubeVideo = document.querySelector('#youtubeVideo');
   categoriesFood = ["Breakfast", "Side", "Starter", "Dessert", "Beef", "Chicken", "Pork", "Lamb", "Goat", "Pasta", "Seafood", "Vegetarian", "Vegan", "Miscellaneous", "Random"]
+  const cardContainer1 = document.querySelector('#cardContainer1');
+  const cardContainer2 = document.querySelector('#cardContainer2');
+  
 
   const randomMeal = "https://www.themealdb.com/api/json/v1/1/random.php"
 
   //THIS IS THE GENERATE BUTTON THAT ACTIVATES ON USER SELECTION IN THE MENUS.
   submitButton.addEventListener('click', function (e) {
-    e.preventDefault();
-
+    e.preventDefault(); 
+    cardContainer1.style.display = "block";
+    cardContainer2.style.display = "block";
+    
 
     const foodPreference = foodType.value
     const drinkPreference = drinkType.value;
