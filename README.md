@@ -20,6 +20,8 @@ On the click of a single button can generate 1 random meal and drink recipe to t
 * Joseph McKinney
 * Rex (Ki) Sarchan
 
+## ![Full Page Screenshot](./assets/images/1682008205626.png)
+
 
 You can also make use of visual aids by including materials like screenshots to show examples of the running project and also the structure and design principles used in your project.
 
