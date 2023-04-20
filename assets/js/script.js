@@ -178,6 +178,9 @@ document.addEventListener('DOMContentLoaded', function () {
   //function to save the current meal/drink combo to local storage
   function saveCurrentMealAndDrink() {
     // Get the current meal and drink details
+    cardContainer1.style.display = "block";
+    cardContainer2.style.display = "block";
+
     const currentMeal = {
       name: cardTitle2.textContent,
       image: foodImage.src,
@@ -214,7 +217,10 @@ document.addEventListener('DOMContentLoaded', function () {
     historyButton.textContent = `Meal: ${meal.name}, Drink: ${drink.name}`;
 
     // Set the event listener for the history button
+
     historyButton.addEventListener('click', () => {
+      cardContainer1.style.display = "block";
+      cardContainer2.style.display = "block";
       updateMealAndDrink(meal, drink);
     });
 
