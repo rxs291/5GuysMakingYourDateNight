@@ -15,6 +15,14 @@ This application dives into two sibling API's, one targeting meal recipes (https
 
     4. Uses drop down menus to narrow the random generator to specific categories to adhere to user preferences. 
 
+## Technologies Used
+
+1. Materialize CSS Framework  <https://materializecss.com/>
+2. HTML, CSS, & JavaScript
+3. jQuery <https://jquery.com/>
+4. The Cocktail DB via API <https://www.thecocktaildb.com/api.php>
+5. The Meal DB via API <https://www.themealdb.com/api.php>
+
 ## Our Visual 
 ## ![Full Page Screenshot](./assets/images/1682008205626.png) 
 
